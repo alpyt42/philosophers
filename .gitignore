@@ -1,3 +1,8 @@
+so_long
+mlx-test
+*.json
+# MLX Linux
+*.gen
 # Prerequisites
 *.d
 
