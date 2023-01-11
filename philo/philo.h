@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 17:06:41 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/01/11 16:50:33 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/01/11 18:26:30 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,14 @@ typedef struct s_philo
 	pthread_t		life;
 	pthread_mutex_t	*lf;
 	pthread_mutex_t	*rf;
-	t_rules		*par;
+	t_rules		*rules;
 }	t_philo;
 
 int			error(char *str, t_rules *r, t_philo *p);
 int			ft_atoi(const char *str);
 long int	time_get(void);
 int			init_philo(t_rules *r, t_philo *p);
+int			*routine(void *per);
+void		p_rout(t_philo *p, char *str);
 
 #endif

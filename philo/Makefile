@@ -2,7 +2,7 @@ NAME = philo
 
 HEADERS = philo.h
 
-SOURCES = philo.c ft_atoi.c main_init.c print.c get_time.c
+SOURCES = philo.c ft_atoi.c main_init.c print.c get_time.c check_situation.c
 
 OBJECTS = $(SOURCES:.c=.o)
 

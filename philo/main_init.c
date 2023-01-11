@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:54:03 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/01/11 16:50:17 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/01/11 18:30:28 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,16 @@ int	init_philo(t_rules *r, t_philo *p)
 	i = -1;
 	while (++i < r->num)
 	{
-		
+		p[i].id = i;
+		p[i].dead = 0;
+		p[i].iter_num = 0;
+		p[i].thread_start = 0;
+		p[i].meal = 0;
+		p[i].lf = &r->fork[i];
+		p[i].rf = 0;
+		p[i].rules = r;
 	}
+	return (0);
 }
 
 static int	init_mutex(t_rules *r)
@@ -54,7 +62,7 @@ static int	init_rules(t_rules *r, char **ag)
 	r->max_meal = -1;
 	r->check_meal = 0;
 	r->start = 0;
-	// r->ready = 0;
+	r->ready = 0;
 	if (ag[5])
 	{
 		r->check_meal = 1;
