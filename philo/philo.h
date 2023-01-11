@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 17:06:41 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/01/11 18:26:30 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/01/11 18:56:38 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct s_philo
 {
 	int				id;
 	int				dead;
-	int				iter_num;
+	int				meal_eaten;
 	long int		thread_start;
 	long int		meal;
 	pthread_t		life;
@@ -63,5 +63,6 @@ long int	time_get(void);
 int			init_philo(t_rules *r, t_philo *p);
 int			*routine(void *per);
 void		p_rout(t_philo *p, char *str);
+void		ft_sleep(long int time);
 
 #endif

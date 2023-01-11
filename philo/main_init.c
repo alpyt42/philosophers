@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:54:03 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/01/11 18:30:28 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/01/11 18:41:32 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	init_philo(t_rules *r, t_philo *p)
 	{
 		p[i].id = i;
 		p[i].dead = 0;
-		p[i].iter_num = 0;
+		p[i].meal_eaten = 0;
 		p[i].thread_start = 0;
 		p[i].meal = 0;
 		p[i].lf = &r->fork[i];
