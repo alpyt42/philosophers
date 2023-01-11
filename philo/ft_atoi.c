@@ -1,30 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/05 17:04:54 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/01/11 16:48:44 by ale-cont         ###   ########.fr       */
+/*   Created: 2023/01/11 09:51:48 by ale-cont          #+#    #+#             */
+/*   Updated: 2023/01/11 13:41:20 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	launch_threads(t_philo *p, t_rules *r)
+int	ft_atoi(const char *str)
 {
-	
+	size_t					i;
+	int						sign;
+	unsigned long long int	nb;
+
+	i = 0;
+	sign = 1;
+	nb = 0;
+	if (!str)
+		return (0);
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			sign *= -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		if ((str[i] < '0' || str[i] > '9'))
+			return (0);
+		nb = nb * 10 + str[i++] - 48;
+	}
+	if (nb > LLONG_MAX || sign < 0)
+		return (0);
+	return (sign * nb);
 }
 
-int	philo(t_rules *r)
-{
-	t_philo	*p;
-	
-	p = malloc(sizeof(t_philo) * r->num);
-	if (!p || init_philo(r, p))
-		return (error("Issue when initiating philos", r, p));
-	if (launch_threads(r, p))
-		return (error("Threads Failed", r, p));
-	return (0);
-}
