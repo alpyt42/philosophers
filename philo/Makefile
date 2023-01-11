@@ -6,7 +6,7 @@ SOURCES = philo.c
 
 OBJECTS = $(SOURCES:.c=.o)
 
-CFLAGS = -Wall -Wextra -Werror -pthread -I .
+CFLAGS = -Wall -Wextra -Werror -pthread -g -I .
 
 all :    $(NAME)
 
