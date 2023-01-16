@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:54:03 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/01/11 18:41:32 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/01/16 17:33:59 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,11 @@ int	main(int ac, char **ag)
 	
 	if ((ac != 5 && ac != 6) || init_rules(&r, ag))
 		return (error("Wrong Arguments", &r, 0));
-	printf("%ld",time_get());
-	// if (philo(&r))
-	// 	return (EXIT_FAILURE);
+	// printf("%ld",time_get());
+	if (philo(&r))
+	{
+		printf("coucou");
+		return (EXIT_FAILURE);
+	}
 	return (EXIT_SUCCESS);
 }

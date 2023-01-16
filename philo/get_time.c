@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 13:56:11 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/01/11 18:56:20 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/01/16 16:52:04 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	ft_sleep(long int time)
 	int	now;
 
 	now = time_get();
-	while (time_get - now < time)
+	while (time_get() - now < time)
 		usleep(150);
-	return (0);
 }

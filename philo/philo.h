@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 17:06:41 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/01/11 18:56:38 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/01/16 17:28:29 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,9 @@ int			error(char *str, t_rules *r, t_philo *p);
 int			ft_atoi(const char *str);
 long int	time_get(void);
 int			init_philo(t_rules *r, t_philo *p);
-int			*routine(void *per);
+void		*routine(void *per);
 void		p_rout(t_philo *p, char *str);
 void		ft_sleep(long int time);
+int			philo(t_rules *r);
 
 #endif

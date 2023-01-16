@@ -6,18 +6,18 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 17:23:34 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/01/11 18:28:10 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/01/16 16:52:39 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	check_death(t_philo *p)
-{
+// void	check_death(t_philo *p)
+// {
 	
-}
+// }
 
-void	check_meal(t_philo *p)
-{
+// void	check_meal(t_philo *p)
+// {
 	
-}
+// }
