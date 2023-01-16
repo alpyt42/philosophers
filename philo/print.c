@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 11:09:47 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/01/11 18:37:08 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/01/16 18:08:35 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,12 @@
 int	error(char *str, t_rules *r, t_philo *p)
 {
 	if (r)
-		free(r);
+	{
+		if (r->fork)
+			free(r->fork);
+		if (r->death)
+			free(r->death);
+	}
 	if (p)
 		free(p);
 	printf("%s", str);

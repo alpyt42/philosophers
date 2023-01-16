@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:54:03 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/01/16 17:33:59 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/01/16 18:32:07 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,11 @@ static int	init_rules(t_rules *r, char **ag)
 int	main(int ac, char **ag)
 {
 	t_rules	r;
-	
-	if ((ac != 5 && ac != 6) || init_rules(&r, ag))
-		return (error("Wrong Arguments", &r, 0));
-	// printf("%ld",time_get());
+
+	if ((ac != 5 && ac != 6))
+		return (error("Wrong Arguments\n", 0, 0));
+	if (init_rules(&r, ag))
+		return (error("Failed when Initializing\n", &r, 0));
 	if (philo(&r))
 	{
 		printf("coucou");
