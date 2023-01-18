@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:54:03 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/01/17 20:01:01 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/01/18 18:01:50 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	init_philo(t_rules *r, t_philo *p)
 		p[i].dead = 0;
 		p[i].meal_eaten = 0;
 		p[i].thread_start = 0;
-		p[i].meal = 0;
+		p[i].time_last_meal = 0;
 		p[i].lf = &r->fork[i];
 		p[i].rf = 0;
 		p[i].rules = r;
@@ -36,13 +36,13 @@ static int	init_mutex(t_rules *r)
 	int	i;
 	
 	i = -1;
-	r->death = malloc(sizeof(pthread_mutex_t));
-	if (!r->death)
+	r->writing = malloc(sizeof(pthread_mutex_t));
+	if (!r->writing)
 		return (error("Error when malloc (death)", r, 0));
 	r->fork = malloc(sizeof(pthread_mutex_t) * r->num);
 	if (!r->fork)
 		return (error("Error when malloc (fork)", r, 0));
-	if (pthread_mutex_init(r->death, NULL))
+	if (pthread_mutex_init(r->writing, NULL))
 		return (error("Error when creating mutex (death)", r, 0));
 	while (++i < r->num)
 		if (pthread_mutex_init(&r->fork[i], NULL))
@@ -63,6 +63,7 @@ static int	init_rules(t_rules *r, char **ag)
 	r->check_meal = 0;
 	r->start = 0;
 	r->ready = 0;
+	r->all_ate = 0;
 	if (ag[5])
 	{
 		r->check_meal = 1;
@@ -90,10 +91,7 @@ int	main(int ac, char **ag)
 		return (error("Failed when Initializing\n", &r, 0));
 	// r.start = time_get();
 	// printf("[%ld]", r.start);
-	// if (philo(&r))
-	// {
-	// 	printf("coucou");
-	// 	return (EXIT_FAILURE);
-	// }
+	if (philo(&r))
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
