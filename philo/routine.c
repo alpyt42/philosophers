@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 17:45:33 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/01/16 17:33:23 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/01/17 19:53:20 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void	*routine(void *per)
 	t_philo	*p;
 
 	p = (t_philo *)per;
-	while (!p->rules->ready)
-		continue ;
+	// while (!p->rules->ready)
+	// 	continue ;
 	while (!p->rules->game_over)
 	{
 		eat(p);

@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 17:04:54 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/01/16 16:51:10 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/01/17 19:37:44 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	launch_threads(t_rules *r, t_philo *p)
 		p[i].meal = r->start;
 	}
 	r->ready = 1;
+	// printf("test2");
 	return (0);
 }
 
@@ -42,6 +43,7 @@ int	philo(t_rules *r)
 	if (!p)
 		return (error("Issue when malloc philo", r, p));
 	init_philo(r, p);
+	// printf("test1");
 	if (launch_threads(r, p))
 		return (error("Threads Failed", r, p));
 	// status_thread(r, p);

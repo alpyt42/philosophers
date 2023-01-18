@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:54:03 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/01/16 18:32:07 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/01/17 20:01:01 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,12 @@ int	main(int ac, char **ag)
 		return (error("Wrong Arguments\n", 0, 0));
 	if (init_rules(&r, ag))
 		return (error("Failed when Initializing\n", &r, 0));
-	if (philo(&r))
-	{
-		printf("coucou");
-		return (EXIT_FAILURE);
-	}
+	// r.start = time_get();
+	// printf("[%ld]", r.start);
+	// if (philo(&r))
+	// {
+	// 	printf("coucou");
+	// 	return (EXIT_FAILURE);
+	// }
 	return (EXIT_SUCCESS);
 }
