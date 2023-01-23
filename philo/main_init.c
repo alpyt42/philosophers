@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 09:54:03 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/01/18 18:01:50 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/01/23 17:42:28 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	init_philo(t_rules *r, t_philo *p)
 	int	i;
 
 	i = -1;
-	while (++i < r->num)
+	while (++i < r->nb_philo)
 	{
 		p[i].id = i;
 		p[i].dead = 0;
@@ -34,17 +34,20 @@ int	init_philo(t_rules *r, t_philo *p)
 static int	init_mutex(t_rules *r)
 {
 	int	i;
-	
+
 	i = -1;
 	r->writing = malloc(sizeof(pthread_mutex_t));
 	if (!r->writing)
+		return (error("Error when malloc (writing)", r, 0));
+	r->death = malloc(sizeof(pthread_mutex_t));
+	if (!r->death)
 		return (error("Error when malloc (death)", r, 0));
-	r->fork = malloc(sizeof(pthread_mutex_t) * r->num);
+	r->fork = malloc(sizeof(pthread_mutex_t) * r->nb_philo);
 	if (!r->fork)
 		return (error("Error when malloc (fork)", r, 0));
 	if (pthread_mutex_init(r->writing, NULL))
-		return (error("Error when creating mutex (death)", r, 0));
-	while (++i < r->num)
+		return (error("Error when creating mutex (writing)", r, 0));
+	while (++i < r->nb_philo)
 		if (pthread_mutex_init(&r->fork[i], NULL))
 			return (error("Error when creating mutex (fork)", r, 0));
 	return (0);
@@ -55,7 +58,7 @@ static int	init_rules(t_rules *r, char **ag)
 	int	mutex;
 
 	mutex = -1;
-	r->num = ft_atoi(ag[1]);
+	r->nb_philo = ft_atoi(ag[1]);
 	r->t2d = ft_atoi(ag[2]);
 	r->t2e = ft_atoi(ag[3]);
 	r->t2s = ft_atoi(ag[4]);
@@ -69,15 +72,15 @@ static int	init_rules(t_rules *r, char **ag)
 		r->check_meal = 1;
 		r->max_meal = ft_atoi(ag[5]);
 	}
-	if (r->num > 0)
+	if (r->nb_philo > 0)
 		mutex = init_mutex(r);
 	// printf("mutex %d\n", mutex);
-	// printf("r->num %d\n", r->num);
+	// printf("r->nb_philo %d\n", r->nb_philo);
 	// printf("r->t2d %d\n", r->t2d);
 	// printf("r->t2e %d\n", r->t2e);
 	// printf("r->t2s %d\n", r->t2s);
 	// printf("r->max_meal %d\n", r->max_meal);
-	return (mutex || r->num == 0 || r->t2d == 0 || r->t2e == 0 
+	return (mutex || r->nb_philo == 0 || r->t2d == 0 || r->t2e == 0 
 			|| r->t2s == 0 || r->max_meal == 0);
 }
 

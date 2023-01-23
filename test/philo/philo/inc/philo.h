@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mlazzare <mlazzare@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/05 17:06:41 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/01/23 23:55:56 by ale-cont         ###   ########.fr       */
+/*   Created: 2021/10/07 14:32:05 by mlazzare          #+#    #+#             */
+/*   Updated: 2021/11/13 17:58:05 by mlazzare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,54 +21,51 @@
 # include <limits.h>
 # include <sys/time.h>
 
-# define FORK "\033[1;33mhas taken a fork\033[0m\033[0m\033[0m\033[0m\033[0m"
-# define EAT "\033[1;32mis eating\033[0m\033[0m\033[0m\033[0m"
-# define SLEEP "\033[1;36mis sleeping\033[0m\033[0m\033[0m"
-# define THINK "\033[1;34mis thinking\033[0m\033[0m"
-# define DIED "\e[0;31mDIED\e[m"
+# define FORK "has taken a fork"
+# define EAT "is eating"
+# define SLEEP "is sleeping"
+# define THINK "is thinking"
+# define DIE "\e[0;31mDIED (ভ_ ভ)\e[m"
 # define LEFT 0
 # define RIGHT 1
 
-typedef struct s_rules
+typedef struct s_params
 {
-	int				nb_philo;
+	int				num;
 	int				ready;
 	int				t2d;
 	int				t2e;
 	int				t2s;
-	int				max_meal;
+	int				max_iter;
 	int				check_meal;
-	int				game_over;
-	int				all_ate;
+	int				over;
 	long int		start;
-	pthread_mutex_t	*writing;
 	pthread_mutex_t	*death;
 	pthread_mutex_t	*fork;
-}	t_rules;
+}	t_params;
 
 typedef struct s_philo
 {
 	int				id;
 	int				dead;
-	int				meal_eaten;
+	int				iter_num;
 	long int		thread_start;
-	long int		time_last_meal;
-	pthread_t		life;
+	long int		meal;
+	pthread_t		life_tid;
 	pthread_mutex_t	*lf;
 	pthread_mutex_t	*rf;
-	t_rules		*rules;
+	t_params		*par;
 }	t_philo;
 
-int			error(char *str, t_rules *r, t_philo *p);
-int			ft_atoi(const char *str);
-long int	time_get(void);
-int			init_philo(t_rules *r, t_philo *p);
-void		*routine(void *per);
-void		p_rout(t_philo *p, char *str);
-void		ft_sleep(long int time);
-int			philo(t_rules *r);
+int			philosophers(t_params *p);
+int			init_philo(t_params *p, t_philo *philo);
 int			check_death(t_philo *p);
-int			check_meal(t_philo *p);
-int			dead(t_philo *p);
+int			ft_atoi(const char *str);
+int			ft_usleep(long int time);
+int			error_msg(char *s, t_params *par, t_philo *p, int malloc);
+void		*thread_routine(void *job);
+void		final_print(int alive);
+void		print_routine(t_philo *p, char *action);
+long int	time_now(void);
 
 #endif
