@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 17:06:41 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/01/23 23:55:56 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/03/21 20:31:36 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,46 +29,40 @@
 # define LEFT 0
 # define RIGHT 1
 
-typedef struct s_rules
+typedef struct s_data	t_data;
+typedef struct s_philo	t_philo;
+
+struct s_data
 {
+	char			**argv;
+	int				argc;
 	int				nb_philo;
-	int				ready;
 	int				t2d;
 	int				t2e;
 	int				t2s;
 	int				max_meal;
-	int				check_meal;
-	int				game_over;
-	int				all_ate;
-	long int		start;
-	pthread_mutex_t	*writing;
-	pthread_mutex_t	*death;
-	pthread_mutex_t	*fork;
-}	t_rules;
+	int				g_status;
+	pthread_mutex_t	print;
+	pthread_t		*threads;
+	t_philo			*philos;
+};
 
-typedef struct s_philo
+struct s_philo
 {
 	int				id;
-	int				dead;
+	long long		time_lmeal;
 	int				meal_eaten;
-	long int		thread_start;
-	long int		time_last_meal;
-	pthread_t		life;
-	pthread_mutex_t	*lf;
-	pthread_mutex_t	*rf;
-	t_rules		*rules;
-}	t_philo;
+	int				dead;
+	pthread_mutex_t	fork;
+	t_data			*data;
+};
 
-int			error(char *str, t_rules *r, t_philo *p);
-int			ft_atoi(const char *str);
-long int	time_get(void);
-int			init_philo(t_rules *r, t_philo *p);
-void		*routine(void *per);
-void		p_rout(t_philo *p, char *str);
-void		ft_sleep(long int time);
-int			philo(t_rules *r);
-int			check_death(t_philo *p);
-int			check_meal(t_philo *p);
-int			dead(t_philo *p);
+/*-------parse-----------------------------*/
+
+int	parse(t_data *d, t_philo **p);
+
+/*-------utils-----------------------------*/
+
+int	ft_atoi(const char *str);
 
 #endif

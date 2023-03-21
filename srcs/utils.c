@@ -1,36 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_situation.c                                  :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 17:23:34 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/01/23 23:28:34 by ale-cont         ###   ########.fr       */
+/*   Created: 2023/03/21 19:59:26 by ale-cont          #+#    #+#             */
+/*   Updated: 2023/03/21 20:03:10 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	check_death(t_philo *p)
+int	ft_atoi(const char *str)
 {
-	int	i;
-	
-	i = -1;
-	while (++i < p->rules->nb_philo)
-		if (time_get() - p->time_last_meal >= p->rules->t2d)
-			return (dead(p));
-	return (0);
-}
+	size_t	i;
+	int		sign;
+	long	nb;
 
-int	check_meal(t_philo *p)
-{
-	int	i;
-
-	i = -1;
-	while (++i < p->rules->nb_philo)
-		if (p[i].meal_eaten != p->rules->max_meal)
-			return (0) ;
-	p->rules->all_ate = 1;
-	return (1);
+	i = 0;
+	sign = 1;
+	nb = 0;
+	if (!str)
+		return (-1);
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			return (-1);
+		i++;
+	}
+	while (str[i])
+	{
+		if ((str[i] < '0' || str[i] > '9'))
+			return (-1);
+		nb = nb * 10 + str[i++] - 48;
+	}
+	if (nb == 0 && str[0] != '0' && str[1] == '\0')
+		return (-1);
+	return (sign * nb);
 }
