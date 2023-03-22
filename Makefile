@@ -6,7 +6,7 @@
 #    By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 19:17:58 by wangthea          #+#    #+#              #
-#    Updated: 2023/03/21 20:13:09 by ale-cont         ###   ########.fr        #
+#    Updated: 2023/03/22 16:41:55 by ale-cont         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,8 @@ THREADS_F 	=	-pthread
 SOURCES =	srcs/main.c \
 			srcs/parse.c \
 			srcs/utils.c \
+			srcs/init.c \
+			
 
 #--debug & define flags--------------------------------------------------------#
 

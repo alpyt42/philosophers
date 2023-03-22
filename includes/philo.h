@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 17:06:41 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/03/21 20:31:36 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/03/22 17:10:28 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ struct s_data
 struct s_philo
 {
 	int				id;
+	int				g_status;
 	long long		time_lmeal;
 	int				meal_eaten;
 	int				dead;
@@ -57,12 +58,16 @@ struct s_philo
 	t_data			*data;
 };
 
+/*-------init------------------------------*/
+
+int			init(t_data *d, t_philo *p, int i);
+
 /*-------parse-----------------------------*/
 
-int	parse(t_data *d, t_philo **p);
+int			parse(t_data *d, t_philo **p);
 
 /*-------utils-----------------------------*/
 
-int	ft_atoi(const char *str);
+long long	ft_time(void);
 
 #endif

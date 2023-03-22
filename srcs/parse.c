@@ -6,11 +6,39 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 18:19:47 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/03/21 20:33:03 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/03/22 17:12:54 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+static int	ft_atoi(const char *str)
+{
+	size_t	i;
+	int		sign;
+	long	nb;
+
+	i = 0;
+	sign = 1;
+	nb = 0;
+	if (!str)
+		return (-1);
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			return (-1);
+		i++;
+	}
+	while (str[i])
+	{
+		if ((str[i] < '0' || str[i] > '9'))
+			return (-1);
+		nb = nb * 10 + str[i++] - 48;
+	}
+	if (nb == 0 && str[0] != '0' && str[1] == '\0')
+		return (-1);
+	return (sign * nb);
+}
 
 static int	valid_data(t_data *d)
 {
@@ -24,7 +52,7 @@ static int	valid_data(t_data *d)
 		return (printf("Error 'parsing' (Time to Sleep must be above 1)\n"));
 	if (d->max_meal < 1 && d->argc == 6)
 		return (printf("Error 'parsing' (Nb Max_Meal must be above 1)\n"));
-	return (1);
+	return (0);
 }
 
 int	parse(t_data *d, t_philo **p)
