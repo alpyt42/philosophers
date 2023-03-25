@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 21:06:34 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/03/23 19:31:25 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/03/25 18:36:15 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,13 @@ static int	check_status(t_data *d, t_philo *p, int i, int count)
 		if (p[i].data->max_meal == p[i].meal_eaten)
 			count++;
 		if (p[i].time_lmeal + d->t2d < ft_time()
-			|| count == d->max_meal)
+			|| count == d->nb_philo)
 		{
-			d->g_status = 0;
 			if (count != d->nb_philo)
 				printf("%lld %d %s\n", ft_time(), i + 1, DIED);
+			else if (d->max_meal >= 0)
+				printf("%lld Everyone has eaten %d meal(s)\n", ft_time(), d->max_meal);
+			d->g_status = 0;
 			return (0);
 		}
 	}
@@ -82,6 +84,7 @@ int	main(int argc, char **argv)
 	d.argc = argc;
 	if (!parse(&d, &p))
 		return (1);
+	g_status = d.g_status;
 	if (!init(&d, p, -1))
 		return (1);
 	while (g_status)
