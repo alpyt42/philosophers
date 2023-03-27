@@ -6,7 +6,7 @@
 #    By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 19:17:58 by wangthea          #+#    #+#              #
-#    Updated: 2023/03/22 17:17:23 by ale-cont         ###   ########.fr        #
+#    Updated: 2023/03/27 10:54:22 by ale-cont         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,8 +36,7 @@ THREADS_F 	=	-pthread
 SOURCES =	srcs/main.c \
 			srcs/parse.c \
 			srcs/utils.c \
-			srcs/init.c \
-			
+			srcs/philo_life.c \
 
 #--debug & define flags--------------------------------------------------------#
 
@@ -82,9 +81,7 @@ clean:
 	@echo "\nRemoving binaries..."
 	@$(RM) -rf $(OBJECTS)
 
-fclean:
-	@echo "\nDeleting objects..."
-	@$(MAKE) clean
+fclean: clean
 	@echo "\nDeleting executable..."
 	@$(RM) $(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 17:06:41 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/03/22 17:10:28 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/03/23 20:07:45 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@
 # include <limits.h>
 # include <sys/time.h>
 
-# define FORK "\033[1;33mhas taken a fork\033[0m\033[0m\033[0m\033[0m\033[0m"
-# define EAT "\033[1;32mis eating\033[0m\033[0m\033[0m\033[0m"
-# define SLEEP "\033[1;36mis sleeping\033[0m\033[0m\033[0m"
-# define THINK "\033[1;34mis thinking\033[0m\033[0m"
-# define DIED "\e[0;31mDIED\e[m"
+# define FORK "has taken a fork"
+# define EAT "is eating"
+# define SLEEP "is sleeping"
+# define THINK "is thinking"
+# define DIED "died"
 # define LEFT 0
 # define RIGHT 1
 
@@ -58,16 +58,10 @@ struct s_philo
 	t_data			*data;
 };
 
-/*-------init------------------------------*/
-
-int			init(t_data *d, t_philo *p, int i);
-
-/*-------parse-----------------------------*/
-
 int			parse(t_data *d, t_philo **p);
-
-/*-------utils-----------------------------*/
-
 long long	ft_time(void);
+void		life(t_philo *p);
+int 		ft_print(t_philo *p, char *action);
+void		ft_sleep(long long time);
 
 #endif
