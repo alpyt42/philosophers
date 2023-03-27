@@ -6,7 +6,7 @@
 #    By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 19:17:58 by wangthea          #+#    #+#              #
-#    Updated: 2023/03/22 16:41:55 by ale-cont         ###   ########.fr        #
+#    Updated: 2023/03/22 17:17:23 by ale-cont         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,19 +79,14 @@ re:
 	$(MAKE) all
 
 clean:
-	@echo "\033[0;31mCleaning libft..."
 	@echo "\nRemoving binaries..."
 	@$(RM) -rf $(OBJECTS)
-	@echo "\033[0m"
 
 fclean:
 	@echo "\nDeleting objects..."
 	@$(MAKE) clean
-	@echo "\033[0;31mCleaning libft..."
-	@$(MAKE) -C fclean
 	@echo "\nDeleting executable..."
 	@$(RM) $(NAME)
-	@echo "\033[0m"
 
 #--PHONY-----------------------------------------------------------------------#
 
