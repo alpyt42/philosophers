@@ -6,7 +6,7 @@
 #    By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 19:17:58 by wangthea          #+#    #+#              #
-#    Updated: 2023/03/27 10:54:22 by ale-cont         ###   ########.fr        #
+#    Updated: 2023/03/27 22:45:08 by ale-cont         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ OBJ_DIR		=	.objects
 #--flags-----------------------------------------------------------------------#
 
 CFLAGS		=	-Wall -Wextra -Werror -I $(INC_DIR)
-DFLAGS		=	-g3 #-fsanitize=address
+DFLAGS		=	-g -fsanitize=thread
 THREADS_F 	=	-pthread
 
 #--Sources-----------------------------------------------------------------------#

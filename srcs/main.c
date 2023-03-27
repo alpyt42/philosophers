@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 21:06:34 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/03/25 18:36:15 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/03/27 22:48:41 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static int	init(t_data *d, t_philo *p, int i)
 		p[i].data = d;
 		if (pthread_create(&d->threads[i], NULL,
 			(void *)life, &p[i]))
-			return (free(p), free(d->threads), 3);
+			return (free(p), free(d->threads), 0);
 	}
 	return (1);
 }
@@ -66,7 +66,7 @@ static int	check_status(t_data *d, t_philo *p, int i, int count)
 			if (count != d->nb_philo)
 				printf("%lld %d %s\n", ft_time(), i + 1, DIED);
 			else if (d->max_meal >= 0)
-				printf("%lld Everyone has eaten %d meal(s)\n", ft_time(), d->max_meal);
+				printf("%lld Everyone have eaten %d meal(s)\n", ft_time(), d->max_meal);
 			d->g_status = 0;
 			return (0);
 		}
