@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 19:59:26 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/03/27 20:28:26 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/03/29 13:21:43 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static long long	get_time(void)
 	struct timeval	now;
 
 	if (gettimeofday(&now, NULL) == -1)
-		return(0);
+		return (0);
 	return ((now.tv_sec * 1000) + (now.tv_usec / 1000));
 }
 
@@ -52,7 +52,7 @@ static int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
 
-int ft_print(t_philo *p, char *action)
+int	ft_print(t_philo *p, char *action)
 {
 	int	g_status;
 

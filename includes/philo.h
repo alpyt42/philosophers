@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 17:06:41 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/03/23 20:07:45 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/03/29 13:50:12 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ struct s_data
 	char			**argv;
 	int				argc;
 	int				nb_philo;
-	int				t2d;
-	int				t2e;
-	int				t2s;
+	int				td;
+	int				te;
+	int				ts;
 	int				max_meal;
 	int				g_status;
 	pthread_mutex_t	print;
@@ -61,7 +61,7 @@ struct s_philo
 int			parse(t_data *d, t_philo **p);
 long long	ft_time(void);
 void		life(t_philo *p);
-int 		ft_print(t_philo *p, char *action);
+int			ft_print(t_philo *p, char *action);
 void		ft_sleep(long long time);
 
 #endif

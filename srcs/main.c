@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 21:06:34 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/03/27 22:48:41 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/03/29 13:52:07 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,25 +48,33 @@ static int	init(t_data *d, t_philo *p, int i)
 		p[i].g_status = 1;
 		p[i].data = d;
 		if (pthread_create(&d->threads[i], NULL,
-			(void *)life, &p[i]))
+				(void *) life, &p[i]))
 			return (free(p), free(d->threads), 0);
 	}
 	return (1);
 }
 
-static int	check_status(t_data *d, t_philo *p, int i, int count)
+static int	check_status(t_data *d, t_philo *p)
 {
+	int	count;
+	int	i;
+	int	meal;
+
+	count = 0;
+	i = -1;
+	meal = d->max_meal;
 	while (++i < d->nb_philo)
 	{
-		if (p[i].data->max_meal == p[i].meal_eaten)
+		if (meal > 0 && p[i].data->max_meal <= p[i].meal_eaten)
 			count++;
-		if (p[i].time_lmeal + d->t2d < ft_time()
-			|| count == d->nb_philo)
+		if (p[i].time_lmeal + d->td < ft_time()
+			|| (meal > 0 && (count >= d->nb_philo)))
 		{
-			if (count != d->nb_philo)
+			if (count < d->nb_philo)
 				printf("%lld %d %s\n", ft_time(), i + 1, DIED);
-			else if (d->max_meal >= 0)
-				printf("%lld Everyone have eaten %d meal(s)\n", ft_time(), d->max_meal);
+			else if (meal >= 1)
+				printf("%lld Everyone have eaten %d meal(s)\n",
+					ft_time(), meal);
 			d->g_status = 0;
 			return (0);
 		}
@@ -90,7 +98,7 @@ int	main(int argc, char **argv)
 	while (g_status)
 	{
 		pthread_mutex_lock(&d.print);
-		g_status = check_status(&d, d.philos, -1, 0);
+		g_status = check_status(&d, d.philos);
 		pthread_mutex_unlock(&d.print);
 		usleep(100);
 	}
