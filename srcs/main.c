@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 21:06:34 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/03/29 13:52:07 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/03/29 14:55:03 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static int	check_status(t_data *d, t_philo *p)
 			if (count < d->nb_philo)
 				printf("%lld %d %s\n", ft_time(), i + 1, DIED);
 			else if (meal >= 1)
-				printf("%lld Everyone have eaten %d meal(s)\n",
+				printf("%lld Everyone has eaten %d meal(s)\n",
 					ft_time(), meal);
 			d->g_status = 0;
 			return (0);
