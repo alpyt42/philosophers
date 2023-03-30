@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 18:19:47 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/03/30 10:47:33 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/03/30 12:59:28 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	ft_atoi(const char *str)
 	while (str[i])
 	{
 		if ((str[i] < '0' || str[i] > '9'))
-			return (dprintf(2, "An alphanum has been found\n"), -1);
+			return (dprintf(2, "A non alphanum has been found\n"), -1);
 		nb = nb * 10 + str[i++] - 48;
 	}
 	if (nb == 0 && str[0] != '0' && str[1] == '\0')
