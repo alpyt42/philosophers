@@ -6,7 +6,7 @@
 /*   By: ale-cont <ale-cont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 18:19:47 by ale-cont          #+#    #+#             */
-/*   Updated: 2023/03/29 13:51:29 by ale-cont         ###   ########.fr       */
+/*   Updated: 2023/03/30 10:47:33 by ale-cont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	ft_atoi(const char *str)
 	while (str[i])
 	{
 		if ((str[i] < '0' || str[i] > '9'))
-			return (-1);
+			return (dprintf(2, "An alphanum has been found\n"), -1);
 		nb = nb * 10 + str[i++] - 48;
 	}
 	if (nb == 0 && str[0] != '0' && str[1] == '\0')
@@ -43,15 +43,15 @@ static int	ft_atoi(const char *str)
 static int	valid_data(t_data *d)
 {
 	if (d->nb_philo < 1)
-		return (printf("Error 'parsing' (Nb Philos must be above 1)\n"));
+		return (dprintf(2, "Error 'parsing' (Nb Philos must be above 1)\n"));
 	if (d->td < 1)
-		return (printf("Error 'parsing' (Time to Death must be above 1)\n"));
+		return (dprintf(2, "Error 'parsing' (Time to Death must be above 1)\n"));
 	if (d->te < 1)
-		return (printf("Error 'parsing' (Time to Eat must be above 1)\n"));
+		return (dprintf(2, "Error 'parsing' (Time to Eat must be above 1)\n"));
 	if (d->ts < 1)
-		return (printf("Error 'parsing' (Time to Sleep must be above 1)\n"));
+		return (dprintf(2, "Error 'parsing' (Time to Sleep must be above 1)\n"));
 	if (d->max_meal < 1 && d->argc == 6)
-		return (printf("Error 'parsing' (Nb Max_Meal must be above 1)\n"));
+		return (dprintf(2, "Error 'parsing' (Nb Max_Meal must be above 1)\n"));
 	return (0);
 }
 
@@ -76,8 +76,8 @@ int	parse(t_data *d, t_philo **p)
 	}
 	else
 	{
-		printf("Error Parsing : Number of Arguments\n");
-		printf("./philo nb_philos time_die time_eat time_sleep [nb_meal]\n");
+		dprintf(2, "Error Parsing : Number of Arguments\n");
+		dprintf(2, "./philo nb_philos time_die time_eat time_sleep [nb_meal]\n");
 	}
 	return (0);
 }
